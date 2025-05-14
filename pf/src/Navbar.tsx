@@ -8,7 +8,7 @@ const Navbar = () => {
   };
   return (
     <div className="flex w-full flex-col">
-      <div className="flex w-full bg-black h-[50px] items-center flex-row p-4 text-white font-semibold gap-4 justify-center text-lg montserrat animate-slide scroll-smooth">
+      <div className="flex w-full bg-black h-[50px] items-center flex-row p-4 text-white font-semibold gap-4 justify-center text-lg montserrat animate-slide scroll-smooth fixed z-50">
         <a href="#home">
           <span
             className={`hover:cursor-pointer rounded-lg px-3 transition-all duration-300 ${

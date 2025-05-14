@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const Navbar = React.lazy(() => import("./Navbar"));
+const Footer = React.lazy(() => import("./Footer"));
 
 export const Home = () => {
   const skills = [
@@ -153,7 +154,7 @@ export const Home = () => {
         </div>
       </section>
       <section id="exp">
-        <div className="flex w-full p-6 bg-black montserrat flex-col gap-4">
+        <div className="flex w-full p-12 bg-black montserrat flex-col gap-4">
           <h1 className="w-full flex justify-center text-4xl text-white">
             EXPERIENCE
           </h1>
@@ -177,7 +178,8 @@ export const Home = () => {
                   }`}
                 ></div>
 
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-700 rounded-full z-10"></div>
+                <div className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-700 rounded-full z-10 animate-[glow_1s_ease-in-out_infinite]`}
+                style={{animationDelay:`${idx*2/10}s`}}></div>
 
                 <div className="w-1/2 flex flex-col items-center z-10">
                   <div
@@ -197,8 +199,8 @@ export const Home = () => {
         </div>
       </section>
       <section id="proj">
-        <div className="flex w-full p-6 bg-red-900 montserrat items-center text-white flex-col gap-4">
-          <h1 className="flex w-full justify-center text-4xl text-white">
+        <div className="flex w-full p-6 bg-red-900 montserrat items-center text-white flex-col gap-4 ">
+          <h1 className="flex w-full justify-center text-4xl text-white ">
             PROJECTS
           </h1>
           <div className="flex w-full flex-col justify-center gap-4">
@@ -224,8 +226,8 @@ export const Home = () => {
                     </p>
                     {hover==index && <p className="text-sm text-white mt-2 transition-all duration-300">{project.hovercontenrt}</p>}
                   </div>
-                  <div className="flex justify-center items-start">
-                    <img src="/goku.jpg" />
+                  <div className={`flex items-start ${index % 2 == 0 ? 'justify-end' : 'justify-start'} w-full`}>
+                    <img src="/goku.jpg" className={`w-[350px] h-[200px] ${hover==index?'h-[400px] w-[500px]':''} transition-all duration-300`}/>
                   </div>
                   
                 </div>
@@ -234,6 +236,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
