@@ -2,7 +2,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { BiLogoInstagram } from "react-icons/bi";
 
-
+// add leetcode dsa to home
 const Footer = () => {
   return (
     <div className='relative flex w-full'>

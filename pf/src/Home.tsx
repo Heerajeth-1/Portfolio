@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import CountUp from "react-countup";
+import Chart from "./Chart";
 
 const Navbar = React.lazy(() => import("./Navbar"));
 const Footer = React.lazy(() => import("./Footer"));
@@ -66,7 +68,7 @@ export const Home = () => {
     },
   ];
 
-  const [hover,setHover] = useState<number|null>(null);
+  const [hover, setHover] = useState<number | null>(null);
 
   return (
     <div className="w-full">
@@ -83,7 +85,7 @@ export const Home = () => {
                   alt="pfp"
                   className="rounded-full w-[400px] h-[200px]"
                 />
-                <div className="flex flex-col w-full justify-center items-center text-white text-xl gap-3 ">
+                <div className="flex flex-col w-full justify-center items-center text-white text-xl gap-3">
                   <h1>HEERAJETH M</h1>
                   <p>Frontend Developer And Data Analyst</p>
                   <p>M.Sc Graduate</p>
@@ -108,7 +110,7 @@ export const Home = () => {
               {skills.slice(0, 5).map((skill, index) => (
                 <motion.span
                   key={index}
-                  className={`flex flex-row justify-start items-center gap-3 rounded-lg bg-black p-4 w-[300px]`}
+                  className={`flex flex-row justify-start items-center gap-3 rounded-lg bg-black p-3 w-[300px]`}
                   style={{ marginLeft: `${(index + 1) * 10}%` }}
                   initial={{ opacity: 0, x: 0 }}
                   animate={{ opacity: 1, x: 50 }}
@@ -131,7 +133,7 @@ export const Home = () => {
               {skills.slice(5, 10).map((skill, index) => (
                 <motion.span
                   key={index}
-                  className={`flex flex-row justify-start items-center gap-3 rounded-lg bg-black p-4 w-[300px]`}
+                  className={`flex flex-row justify-start items-center gap-3 rounded-lg bg-black p-3 w-[300px]`}
                   style={{ marginRight: `${(index + 1) * 10}%` }}
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -149,6 +151,39 @@ export const Home = () => {
                   <span className="text-white text-lg">{skill.name}</span>
                 </motion.span>
               ))}
+            </div>
+          </div>
+          <div className="flex w-2/3 justify-center items-center bg-black p-4 rounded-lg border-2 border-red-900 text-white flex-col">
+            <h1 className="text-2xl">My DSA Journey</h1>
+            <div className="flex flex-row w-full gap-8 justify-center items-center p-4">
+              <div className="flex justify-between items-center text-xl w-1/3 text-center flex-col gap-3">
+                <span className="flex flex-col justify-center items-center">
+                  <h1 className="text-2xl">🎯 Over </h1>
+                  <h1 className="text-3xl">
+                    <CountUp end={200} duration={3} />+
+                  </h1>{" "}
+                  DSA Questions Solved in Leetcode
+                </span>
+                <a href="https://leetcode.com/u/heerajeth706/" target="_blank">
+                  <span className="gap-3 flex items-center hover:scale-110 transition-all duration-200 hover:cursor-pointer">
+                    <img src="/leet.png" alt="" />
+                    My Leetcode Profile
+                  </span>
+                </a>
+              </div>
+              <div className="flex justify-center items-center">
+                <Chart />
+              </div>
+            </div>
+            <div className="overflow-hidden whitespace-nowrap text-white flex">
+              <div className="inline-block whitespace-nowrap animate-[slide_10s_linear_infinite]">
+                <span className="mx-4">Arrays</span>
+                <span className="mx-4">Stack</span>
+                <span className="mx-4">Linked List</span>
+                <span className="mx-4">HashMap</span>
+                <span className="mx-4">Strings</span>
+                <span className="mx-4">Trees</span>
+              </div>
             </div>
           </div>
         </div>
@@ -178,8 +213,10 @@ export const Home = () => {
                   }`}
                 ></div>
 
-                <div className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-700 rounded-full z-10 animate-[glow_1s_ease-in-out_infinite]`}
-                style={{animationDelay:`${idx*2/10}s`}}></div>
+                <div
+                  className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-700 rounded-full z-10 animate-[glow_1s_ease-in-out_infinite]`}
+                  style={{ animationDelay: `${(idx * 2) / 10}s` }}
+                ></div>
 
                 <div className="w-1/2 flex flex-col items-center z-10">
                   <div
@@ -211,7 +248,13 @@ export const Home = () => {
                   index % 2 == 0 ? "justify-start" : "justify-end"
                 } items-center flex-row`}
               >
-                <div className={`flex flex-col bg-black p-4 rounded-lg text-white gap-4 ${hover==index?'w-2/3 h-[600px]':'w-1/2'} transition-all duration-300 h-[400px]`} onMouseEnter={() => setHover(index)} onMouseLeave={() => setHover(null)}>
+                <div
+                  className={`flex flex-col bg-black p-4 rounded-lg text-white gap-4 ${
+                    hover == index ? "w-2/3 h-[600px]" : "w-1/2"
+                  } transition-all duration-300 h-[400px]`}
+                  onMouseEnter={() => setHover(index)}
+                  onMouseLeave={() => setHover(null)}
+                >
                   <div className="flex flex-col">
                     <h1 className="font-bold text-4xl montserrat">
                       {project.name}
@@ -224,12 +267,24 @@ export const Home = () => {
                     <p className="text-sm text-white mt-2">
                       {project.description}
                     </p>
-                    {hover==index && <p className="text-sm text-white mt-2 transition-all duration-300">{project.hovercontenrt}</p>}
+                    {hover == index && (
+                      <p className="text-sm text-white mt-2 transition-all duration-300">
+                        {project.hovercontenrt}
+                      </p>
+                    )}
                   </div>
-                  <div className={`flex items-start ${index % 2 == 0 ? 'justify-end' : 'justify-start'} w-full`}>
-                    <img src="/goku.jpg" className={`w-[350px] h-[200px] ${hover==index?'h-[400px] w-[500px]':''} transition-all duration-300`}/>
+                  <div
+                    className={`flex items-start ${
+                      index % 2 == 0 ? "justify-end" : "justify-start"
+                    } w-full`}
+                  >
+                    <img
+                      src="/goku.jpg"
+                      className={`w-[350px] h-[200px] ${
+                        hover == index ? "h-[400px] w-[500px]" : ""
+                      } transition-all duration-300`}
+                    />
                   </div>
-                  
                 </div>
               </div>
             ))}
